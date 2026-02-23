@@ -11,7 +11,7 @@
  * dependency is required.
  */
 
-import { useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -73,8 +73,6 @@ export default function TrendChart({
   meta,
   currentMonthIndex,
 }) {
-  const chartRef = useRef(null)
-
   // ── Build per-month series for this area ──────────────────────────────────
   const series = useMemo(() => {
     if (!features || !selectedAreaId || !meta?.months) return []
@@ -233,7 +231,7 @@ export default function TrendChart({
         Red dot = alert
       </p>
       <div className="h-44">
-        <Line ref={chartRef} data={data} options={options} />
+        <Line data={data} options={options} />
       </div>
     </div>
   )
