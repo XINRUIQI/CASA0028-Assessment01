@@ -28,8 +28,8 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 
 const THEFT_COUNT_COLOR = [
   'step', ['coalesce', ['get', 'theft_count'], -1], '#475569',
-  0,   '#e2e8f0',  1,   '#c7d2fe',  20,  '#818cf8',
-  40,  '#6366f1',  65,  '#4f46e5',  90,  '#4338ca',  120, '#312e81',
+  0,   '#ffffff',  1,   '#c7d2fe',  20,  '#818cf8',
+  40,  '#4f46e5',  65,  '#3730a3',  100, '#1e1b4b',
 ]
 
 const RISK_INDEX_COLOR = [
@@ -50,10 +50,9 @@ const DELTA_RISK_COLOR = [
 const COUNT_LEGEND = {
   title: 'Theft Count',
   items: [
-    { color: '#e2e8f0', label: '0' },         { color: '#c7d2fe', label: '1–19' },
-    { color: '#818cf8', label: '20–39' },      { color: '#6366f1', label: '40–64' },
-    { color: '#4f46e5', label: '65–89' },      { color: '#4338ca', label: '90–119' },
-    { color: '#312e81', label: '≥ 120' },
+    { color: '#ffffff', label: '0' },         { color: '#c7d2fe', label: '1–19' },
+    { color: '#818cf8', label: '20–39' },      { color: '#4f46e5', label: '40–64' },
+    { color: '#3730a3', label: '65–99' },      { color: '#1e1b4b', label: '≥ 100' },
   ],
 }
 
@@ -381,7 +380,7 @@ function OneMap({
   const [breath, setBreath] = useState(1)
   useEffect(() => {
     const id = setInterval(() => {
-      const phase = (Date.now() % 2000) / 2000          // 0 → 1 over 2 s
+      const phase = (Date.now() % 1800) / 1800          // 0 → 1 over 1 s
       setBreath(0.5 + 0.5 * Math.sin(phase * Math.PI * 2))
     }, 50)                                               // ~20 fps
     return () => clearInterval(id)
