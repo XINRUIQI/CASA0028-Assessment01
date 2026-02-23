@@ -412,6 +412,23 @@ def main():
     crime_df = fetch_all_crimes(gdf, months, DATA_CACHE)
     logger.info("  Total incident-level records fetched: %d", len(crime_df))
 
+    # ── Safety check: abort if Police API returned no data ──────────────
+    total_thefts = (
+        crime_df["theft_count"].sum() if "theft_count" in crime_df.columns else 0
+    )
+    if total_thefts == 0:
+        logger.warning("=" * 60)
+        logger.warning("ALL theft_count values are ZERO.")
+        logger.warning(
+            "The Police API likely has no data for the requested months."
+        )
+        logger.warning("Output files will NOT be overwritten.")
+        logger.warning(
+            "The existing public/data/ snapshot remains valid for demo."
+        )
+        logger.warning("=" * 60)
+        sys.exit(0)
+
     # 4 – OSM exposure
     logger.info("=" * 60)
     logger.info("STEP 4 / 6  Fetching OSM exposure data")
