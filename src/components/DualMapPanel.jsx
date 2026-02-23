@@ -28,22 +28,21 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 
 const THEFT_COUNT_COLOR = [
   'step', ['coalesce', ['get', 'theft_count'], -1], '#475569',
-  0,   '#e2e8f0',  1,   '#22c55e',  20,  '#86efac',
-  40,  '#fbbf24',  65,  '#f97316',  90,  '#ef4444',  120, '#991b1b',
+  0,   '#e2e8f0',  1,   '#c7d2fe',  20,  '#818cf8',
+  40,  '#6366f1',  65,  '#4f46e5',  90,  '#4338ca',  120, '#312e81',
 ]
 
 const RISK_INDEX_COLOR = [
   'step', ['coalesce', ['get', 'risk_index'], -1], '#475569',
-  0.0, '#22c55e',  0.6, '#86efac',  0.85, '#fbbf24',
-  1.15,'#f97316',  1.5, '#ef4444',  2.0,  '#991b1b',
+  0.0, '#fee2e2',  0.6, '#fca5a5',  0.85, '#ef4444',
+  1.15,'#dc2626',  1.5, '#991b1b',  2.0,  '#450a0a',
 ]
 
 const DELTA_RISK_COLOR = [
-  'interpolate', ['linear'],
-  ['coalesce', ['get', 'delta_risk_index'], 0],
-  -1.5, '#22c55e',  -0.4, '#86efac',
-   0.0, '#94a3b8',
-   0.4, '#fbbf24',   0.8, '#f97316',  1.5, '#991b1b',
+  'step', ['coalesce', ['get', 'delta_risk_index'], 0],
+  '#1d4ed8',
+  -1.5, '#60a5fa',  -0.8, '#bfdbfe',  -0.4, '#ffffff',
+   0.4, '#fca5a5',   0.8, '#dc2626',   1.5, '#7f1d1d',
 ]
 
 // ── Legend definitions ───────────────────────────────────────────────────────
@@ -51,10 +50,10 @@ const DELTA_RISK_COLOR = [
 const COUNT_LEGEND = {
   title: 'Theft Count',
   items: [
-    { color: '#e2e8f0', label: '0' },         { color: '#22c55e', label: '1–19' },
-    { color: '#86efac', label: '20–39' },      { color: '#fbbf24', label: '40–64' },
-    { color: '#f97316', label: '65–89' },      { color: '#ef4444', label: '90–119' },
-    { color: '#991b1b', label: '≥ 120' },
+    { color: '#e2e8f0', label: '0' },         { color: '#c7d2fe', label: '1–19' },
+    { color: '#818cf8', label: '20–39' },      { color: '#6366f1', label: '40–64' },
+    { color: '#4f46e5', label: '65–89' },      { color: '#4338ca', label: '90–119' },
+    { color: '#312e81', label: '≥ 120' },
   ],
 }
 
@@ -62,10 +61,9 @@ const RISK_LEGEND = {
   title: 'Risk Index',
   subtitle: 'baseline = 1.0',
   items: [
-    { color: '#22c55e', label: '< 0.6' },      { color: '#86efac', label: '0.6–0.85' },
-    { color: '#fbbf24', label: '0.85–1.15' },  { color: '#f97316', label: '1.15–1.5' },
-    { color: '#ef4444', label: '1.5–2.0' },    { color: '#991b1b', label: '> 2.0' },
-    { color: '#475569', label: 'No data' },
+    { color: '#fee2e2', label: '< 0.6' },      { color: '#fca5a5', label: '0.6–0.85' },
+    { color: '#ef4444', label: '0.85–1.15' },  { color: '#dc2626', label: '1.15–1.5' },
+    { color: '#991b1b', label: '1.5–2.0' },    { color: '#450a0a', label: '> 2.0' },
   ],
 }
 
@@ -73,12 +71,13 @@ const DELTA_LEGEND = {
   title: 'Δ Risk Index (B − A)',
   subtitle: 'change vs month A',
   items: [
-    { color: '#22c55e', label: '< −1.0  big drop' },
-    { color: '#86efac', label: '−1.0 to −0.4  drop' },
-    { color: '#94a3b8', label: '≈ 0  stable' },
-    { color: '#fbbf24', label: '0.4–0.8  rise' },
-    { color: '#f97316', label: '0.8–1.5  large rise' },
-    { color: '#991b1b', label: '> 1.5  big rise' },
+    { color: '#1d4ed8', label: '≤ −1.5  big drop' },
+    { color: '#60a5fa', label: '−1.5 to −0.8  drop' },
+    { color: '#bfdbfe', label: '−0.8 to −0.4  slight drop' },
+    { color: '#ffffff', label: '≈ 0  stable' },
+    { color: '#fca5a5', label: '0.4–0.8  rise' },
+    { color: '#dc2626', label: '0.8–1.5  large rise' },
+    { color: '#7f1d1d', label: '≥ 1.5  big rise' },
   ],
 }
 
