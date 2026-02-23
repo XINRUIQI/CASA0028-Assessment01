@@ -1,5 +1,5 @@
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -7,10 +7,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+.vite/
 *.local
+
 
 # Editor directories and files
 .vscode/*
@@ -23,13 +27,20 @@ dist-ssr
 *.sln
 *.sw?
 
+
 # Python pipeline – exclude large/generated artefacts
-ass01/.venv/
-ass01/data/cache/
-ass01/data/output/
-ass01/__pycache__/
-ass01/**/__pycache__/
-ass01/**/*.pyc
+/cache/
+/output/
+/data/raw/
+/data/interim/
+/data/cache/
+/data/output/
+/data/tmp/
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+*.pyc
 
 # Raw geospatial files at root (not needed for deployment)
 *.geojson
