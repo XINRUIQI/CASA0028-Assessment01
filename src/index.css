@@ -1,0 +1,119 @@
+/* Import Tailwind v4 (replaces tw-styles.css) */
+@import "tailwindcss";
+
+/* ── Reset & full-height layout ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* slate-900 */
+  color: #f8fafc;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Range slider – cross-browser styling ── */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  outline: none;
+  background: #334155; /* slate-700 */
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f97316; /* orange-500 */
+  cursor: pointer;
+  transition: background 0.15s;
+  box-shadow: 0 0 0 2px #0f172a;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f97316;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 0 2px #0f172a;
+}
+
+input[type='range']:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px #f9731650;
+}
+
+/* ── MapLibre GL – remove default focus ring on canvas ── */
+.maplibregl-canvas:focus { outline: none; }
+
+/* ── Select element consistent dark styling ── */
+select {
+  color-scheme: dark;
+}
+
+/* ── Dual range slider (Month Comparison mode) ─────────────────────────────
+   Both inputs are absolutely positioned on top of each other.
+   `pointer-events: none` on the <input> suppresses track click-drag;
+   `pointer-events: all` on each `::-webkit-slider-thumb` re-enables only
+   the thumb, so the two thumbs are independently draggable (WebKit/Blink).
+   Firefox receives pointer events on the element regardless of the CSS rule,
+   but since the inputs are stacked, the top one (range-b) captures first.
+ ─────────────────────────────────────────────────────────────────────────── */
+input[type='range'].range-a,
+input[type='range'].range-b {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent !important;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+input[type='range'].range-a::-webkit-slider-runnable-track,
+input[type='range'].range-b::-webkit-slider-runnable-track {
+  background: transparent !important;
+}
+
+input[type='range'].range-a::-moz-range-track,
+input[type='range'].range-b::-moz-range-track {
+  background: transparent !important;
+}
+
+/* Thumb A – sky-blue (Month A) */
+input[type='range'].range-a::-webkit-slider-thumb {
+  pointer-events: all;
+  background: #38bdf8 !important; /* sky-400 */
+  box-shadow: 0 0 0 2px #0f172a, 0 0 0 3px #38bdf860;
+}
+input[type='range'].range-a::-moz-range-thumb {
+  pointer-events: all;
+  background: #38bdf8 !important;
+  box-shadow: 0 0 0 2px #0f172a, 0 0 0 3px #38bdf860;
+}
+
+/* Thumb B – orange (Month B) */
+input[type='range'].range-b::-webkit-slider-thumb {
+  pointer-events: all;
+  background: #f97316 !important; /* orange-500 */
+}
+input[type='range'].range-b::-moz-range-thumb {
+  pointer-events: all;
+  background: #f97316 !important;
+}

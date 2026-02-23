@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+#root {
+    @apply w-full max-w-7xl mx-auto p-8;
+}
