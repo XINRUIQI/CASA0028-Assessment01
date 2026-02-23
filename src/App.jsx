@@ -343,7 +343,7 @@ export default function App() {
                   </p>
                   <p>
                     <span className="text-slate-300 font-semibold">Risk Index</span>
-                    {' '}= borough theft-per-spot ÷ city mean. Values{' '}
+                    {' '}= (borough_theft_count ÷ borough_exposure) ÷ city_mean. Values{' '}
                     <span className="text-red-400">&gt; 1</span> indicate
                     above-average risk per parking spot.
                   </p>
