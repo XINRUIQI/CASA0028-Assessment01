@@ -84,7 +84,7 @@ function Ticks({ months, maxIdx, activeA, activeB, thumbR = 8 }) {
               : isA ? 'h-2.5 bg-orange-400'   // single-slider active
               :       'h-1.5 bg-slate-600'
             }`} />
-            <span className={`text-[8px] leading-none mt-px transition-colors ${
+            <span className={`text-[9px] leading-none mt-px transition-colors ${
               both  ? 'text-sky-200    font-bold'
               : isA && activeB !== undefined ? 'text-sky-300   font-bold'
               : isB ? 'text-orange-300 font-bold'
@@ -123,7 +123,7 @@ function SingleRangeSlider({ months, monthIndex, setMonthIndex }) {
 
       {/* Label row — fixed 12 px to match DualRangeSlider's A/B label row */}
       <div className="flex justify-center mt-0.5" style={{ height: 12 }}>
-        <span className="text-[10px] font-semibold text-orange-300 leading-none">
+        <span className="text-[11px] font-semibold text-orange-300 leading-none">
           {fmtMonth(months[monthIndex])}
         </span>
       </div>
@@ -185,11 +185,11 @@ function DualRangeSlider({ months, monthA, monthB, onChangeA, onChangeB }) {
 
       {/* A / B label row — fixed 12 px height */}
       <div className="flex justify-between items-center mt-0.5" style={{ height: 12 }}>
-        <span className="text-[10px] font-semibold text-sky-400 leading-none">A: {fmtMonth(monthA)}</span>
+        <span className="text-[11px] font-semibold text-sky-400 leading-none">A: {fmtMonth(monthA)}</span>
         {monthA === monthB && (
-          <span className="text-[10px] text-yellow-500 leading-none">⚠ same month</span>
+          <span className="text-[11px] text-yellow-500 leading-none">⚠ same month</span>
         )}
-        <span className="text-[10px] font-semibold text-orange-400 leading-none">B: {fmtMonth(monthB)}</span>
+        <span className="text-[11px] font-semibold text-orange-400 leading-none">B: {fmtMonth(monthB)}</span>
       </div>
     </div>
   )

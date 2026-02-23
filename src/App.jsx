@@ -267,8 +267,8 @@ export default function App() {
       <header className="flex items-center justify-between px-5 h-11 bg-slate-900 border-b border-slate-700 flex-shrink-0">
         <div className="flex items-center gap-2">
           <span className="text-orange-400">🚲</span>
-          <span className="font-semibold text-sm tracking-wide">Bike Theft: Counts vs Risk</span>
-          <span className="text-slate-500 text-sm">Compare counts vs risk index, detect abnormal months with alerts.</span>
+          <span className="font-semibold text-base tracking-wide">Bike Theft: Counts vs Risk</span>
+          <span className="text-slate-500 text-base">Compare counts vs risk index, detect abnormal months with alerts.</span>
         </div>
       </header>
 
@@ -327,10 +327,14 @@ export default function App() {
             {!selectedAreaId && (
               <div className="px-4 pt-4 pb-4 border-b border-slate-700 space-y-3">
                 <p className="text-xs text-slate-300 leading-relaxed">
-                  This tool compares raw bike theft counts with
-                  exposure-normalised risk indices across London boroughs,
-                  enabling users to distinguish genuinely high-risk areas
-                  from those with high counts due to infrastructure density.
+                  You can see where bike thefts happen most — and whether
+                  that's because there are more bikes parked there, or
+                  because the area is genuinely riskier.
+                </p>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Compare any two months to spot how risk has changed over
+                  time, with automatic alerts flagging boroughs that show
+                  unusual spikes or rising trends.
                 </p>
                 <div className="space-y-1.5 text-[11px] text-slate-500 leading-relaxed">
                   <p>
