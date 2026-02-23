@@ -5,6 +5,7 @@ import DualMapPanel       from './components/DualMapPanel'
 import ExplainCard        from './components/ExplainCard'
 import TrendChart         from './components/TrendChart'
 import RankingChart       from './components/RankingChart'
+import ErrorBoundary      from './components/ErrorBoundary'
 
 // ── Loading / Error screens ──────────────────────────────────────────────────
 
@@ -288,21 +289,23 @@ export default function App() {
 
         {/* ── Map area ── */}
         <div className="flex-1 overflow-hidden">
-          <DualMapPanel
-            areas={areas}
-            currentFeatures={currentFeatures}
-            featuresA={featuresA}
-            featuresB={featuresB}
-            deltaFeatures={deltaFeatures}
-            selectedAreaId={selectedAreaId}
-            onSelectArea={setSelectedAreaId}
-            currentMonth={currentMonth}
-            monthA={monthA}
-            monthB={monthB}
-            mode={mode}
-            showDelta={showDelta}
-            filterAlertsOnly={filterAlertsOnly}
-          />
+          <ErrorBoundary>
+            <DualMapPanel
+              areas={areas}
+              currentFeatures={currentFeatures}
+              featuresA={featuresA}
+              featuresB={featuresB}
+              deltaFeatures={deltaFeatures}
+              selectedAreaId={selectedAreaId}
+              onSelectArea={setSelectedAreaId}
+              currentMonth={currentMonth}
+              monthA={monthA}
+              monthB={monthB}
+              mode={mode}
+              showDelta={showDelta}
+              filterAlertsOnly={filterAlertsOnly}
+            />
+          </ErrorBoundary>
         </div>
 
         {/* ── Right panel ── */}
@@ -384,24 +387,26 @@ export default function App() {
               alertCount={alertCount}
             />
 
-            {/* 3. Risk index over time (TrendChart, borough selected only) */}
-            {selectedAreaId && (
-              <TrendChart
-                features={recomputedFeatures}
-                selectedAreaId={selectedAreaId}
-                meta={meta}
-                currentMonthIndex={monthIndex}
-              />
-            )}
+            <ErrorBoundary>
+              {/* 3. Risk index over time (TrendChart, borough selected only) */}
+              {selectedAreaId && (
+                <TrendChart
+                  features={recomputedFeatures}
+                  selectedAreaId={selectedAreaId}
+                  meta={meta}
+                  currentMonthIndex={monthIndex}
+                />
+              )}
 
-            {/* 4. Top-10 ranking (RankingChart) */}
-            <RankingChart
-              rankedTopN={rankedTopN}
-              mode={mode}
-              displayMetric={displayMetric}
-              selectedAreaId={selectedAreaId}
-              onSelectArea={setSelectedAreaId}
-            />
+              {/* 4. Top-10 ranking (RankingChart) */}
+              <RankingChart
+                rankedTopN={rankedTopN}
+                mode={mode}
+                displayMetric={displayMetric}
+                selectedAreaId={selectedAreaId}
+                onSelectArea={setSelectedAreaId}
+              />
+            </ErrorBoundary>
 
             {/* Alert level legend */}
             <div className="px-4 py-2.5 border-t border-slate-700/60 space-y-0.5">
