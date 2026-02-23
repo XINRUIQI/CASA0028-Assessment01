@@ -326,13 +326,13 @@ export default function App() {
             {/* 1a. About panel (no borough selected) */}
             {!selectedAreaId && (
               <div className="px-4 pt-4 pb-4 border-b border-slate-700 space-y-3">
-                <p className="text-[11px] text-slate-300 leading-relaxed">
+                <p className="text-xs text-slate-300 leading-relaxed">
                   This tool compares raw bike theft counts with
                   exposure-normalised risk indices across London boroughs,
                   enabling users to distinguish genuinely high-risk areas
                   from those with high counts due to infrastructure density.
                 </p>
-                <div className="space-y-1.5 text-[10px] text-slate-500 leading-relaxed">
+                <div className="space-y-1.5 text-[11px] text-slate-500 leading-relaxed">
                   <p>
                     <span className="text-sky-400 font-semibold">Left map</span>
                     {' '}— theft count or risk index for the selected month.
@@ -350,7 +350,7 @@ export default function App() {
                     above-average risk per parking spot.
                   </p>
                 </div>
-                <p className="text-[10px] text-slate-500 italic">
+                <p className="text-[11px] text-slate-500 italic">
                   Click any borough on the map to explore its full risk profile →
                 </p>
               </div>
