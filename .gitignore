@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python pipeline – exclude large/generated artefacts
+ass01/.venv/
+ass01/data/cache/
+ass01/data/output/
+ass01/__pycache__/
+ass01/**/__pycache__/
+ass01/**/*.pyc
+
+# Raw geospatial files at root (not needed for deployment)
+*.geojson
+!public/data/*.geojson
+
+# Old OpenPlaques demo data (superseded by bike theft data)
+src/data/
