@@ -49,9 +49,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Copy output to public/data
-        run: |
-          mkdir -p public/data
-          cp data/output/areas.geojson  public/data/
-          cp data/output/features.json  public/data/
-          cp data/output/meta.json      public/data/
