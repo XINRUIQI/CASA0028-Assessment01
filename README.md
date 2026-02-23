@@ -1,5 +1,3 @@
-<div align="center">
-
 # 🚲 Bike Theft: Counts vs Risk  
 **Compare counts vs risk index, detect abnormal months with alerts.**
 
